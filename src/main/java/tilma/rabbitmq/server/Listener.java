@@ -7,14 +7,13 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 /**
- *
+ *  Listener for multiple messages (Foo and Bar). See the DefaultClassMapper in RabbitmqApplication 
  */
 @Service
 @RabbitListener(queues = "the-queue")
 public class Listener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Listener.class);
-
 
     @RabbitHandler
     public void bar(ServerBar clientBar) {
@@ -25,6 +24,4 @@ public class Listener {
     public void foo(ServerFoo clientFoo) {
         LOGGER.info("Foo: {}", clientFoo.getName());
     }
-
-
 }
