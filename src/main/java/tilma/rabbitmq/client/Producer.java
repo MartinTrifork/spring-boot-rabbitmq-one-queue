@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import static tilma.rabbitmq.RabbitmqApplication.THE_EXCHANGE;
 
 /**
- *
+ * producer of messages
  */
 @RestController
 public class Producer {

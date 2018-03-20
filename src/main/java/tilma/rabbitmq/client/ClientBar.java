@@ -3,8 +3,9 @@ package tilma.rabbitmq.client;
 import java.io.Serializable;
 
 /**
- *
+ *  Bar client side
  */
+@SuppressWarnings("unused") // JSON
 public class ClientBar implements Serializable {
 
     private String name;
@@ -12,7 +13,7 @@ public class ClientBar implements Serializable {
     public ClientBar() {
     }
 
-    public ClientBar(String name) {
+    ClientBar(String name) {
         this.name=name;
     }
 

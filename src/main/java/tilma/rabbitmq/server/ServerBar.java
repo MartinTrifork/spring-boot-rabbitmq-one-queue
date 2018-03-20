@@ -1,13 +1,14 @@
 package tilma.rabbitmq.server;
 
 /**
- *
+ *  Bar server side
  */
+@SuppressWarnings("unused") // JSON
 public class ServerBar {
 
     private String name;
 
-    public String getName() {
+    String getName() {
         return name;
     }
 

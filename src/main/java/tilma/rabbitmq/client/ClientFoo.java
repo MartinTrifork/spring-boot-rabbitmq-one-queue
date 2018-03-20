@@ -3,8 +3,9 @@ package tilma.rabbitmq.client;
 import java.io.Serializable;
 
 /**
- *
+ * Foo client side
  */
+@SuppressWarnings("unused") // JSON
 public class ClientFoo implements Serializable {
 
     private String name;
@@ -12,7 +13,7 @@ public class ClientFoo implements Serializable {
     public ClientFoo() {
     }
 
-    public ClientFoo(String name) {
+    ClientFoo(String name) {
         this.name = name;
     }
 
