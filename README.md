@@ -8,5 +8,5 @@ One todo item:
 
 ## Run RabbitMQ
 ```Shell
-docker run  -d -p 5671:5671 -p 15672:15672 --name some-rabbit rabbitmq:3-management
+docker run -d -p 5671:5671 -p 15672:15672 --name some-rabbit rabbitmq:3-management
 ```
