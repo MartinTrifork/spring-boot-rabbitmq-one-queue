@@ -5,10 +5,12 @@ import java.io.Serializable;
 /**
  *  Bar client side
  */
-@SuppressWarnings("unused") // JSON
+@SuppressWarnings({"unused", "FieldCanBeLocal"}) // JSON
 public class ClientBar implements Serializable {
 
     private String name;
+
+    private String extra = "a";  // will be ignored
 
     public ClientBar() {
     }
@@ -23,5 +25,9 @@ public class ClientBar implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public String getExtra() {
+        return extra;
     }
 }
