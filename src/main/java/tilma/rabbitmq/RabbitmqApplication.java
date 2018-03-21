@@ -11,6 +11,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import tilma.rabbitmq.client.ClientBar;
+import tilma.rabbitmq.client.ClientFoo;
 import tilma.rabbitmq.client.Producer;
 import tilma.rabbitmq.server.ServerBar;
 import tilma.rabbitmq.server.ServerFoo;
@@ -56,19 +58,31 @@ public class RabbitmqApplication {
 
 
     @Bean
-    public Jackson2JsonMessageConverter jsonMessageConverter() {
+    public Jackson2JsonMessageConverter jsonMessageConverter() throws Exception {
         Jackson2JsonMessageConverter jsonConverter = new Jackson2JsonMessageConverter();
         jsonConverter.setClassMapper(classMapper());
         return jsonConverter;
     }
 
     @Bean
-    public DefaultClassMapper classMapper() {
+    public DefaultClassMapper classMapper() throws Exception {
         DefaultClassMapper classMapper = new DefaultClassMapper();
         Map<String, Class<?>> idClassMapping = new HashMap<>();
-        idClassMapping.put("tilma.rabbitmq.client.ClientFoo", ServerFoo.class);
-        idClassMapping.put("tilma.rabbitmq.client.ClientBar", ServerBar.class);
+        idClassMapping.put("tilma.Foo", ClientFoo.class); // producer side
+        idClassMapping.put("tilma.Bar", ClientBar.class); // producer side
+
         classMapper.setIdClassMapping(idClassMapping);
+
+        classMapper.afterPropertiesSet(); // cheating to get the mapping into the classIdMapping inside the class
+
+        idClassMapping.put("tilma.Foo", ServerFoo.class); // listener side
+        idClassMapping.put("tilma.Bar", ServerBar.class); // listener side
+
+        classMapper.setIdClassMapping(idClassMapping);
+
+
+
+
         return classMapper;
     }
 
