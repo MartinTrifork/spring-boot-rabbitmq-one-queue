@@ -4,7 +4,7 @@ This is a spring boot project showing how to send mulitple message over one exch
 annotations / configuration to handle them.
 
 One todo item:
-- how to handle un configured messages?
+- how to handle unconfigured messages?
 
 ## Run RabbitMQ
 ```Shell
